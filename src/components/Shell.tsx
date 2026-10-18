@@ -13,19 +13,19 @@ export function Shell({ children }: { children: ReactNode }) {
   ];
   return (
     <div className="min-h-screen">
-      <header className="border-b border-border bg-card">
+      <header className="header-bar">
         <div className="mx-auto flex max-w-3xl flex-wrap items-center gap-3 px-4 py-3">
-          <Link to="/" className="font-display text-xl font-bold text-primary">Agla Kadam</Link>
+          <Link to="/" className="font-display text-2xl font-bold">🌱 Agla Kadam</Link>
           <select
             aria-label="Language"
-            className="field ml-auto w-auto py-1"
+            className="field ml-auto w-auto py-1 text-foreground"
             value={s.lang}
             onChange={(e) => set((x) => ({ ...x, lang: e.target.value as Lang }))}
           >
             {(Object.keys(LANG_LABEL) as Lang[]).map((l) => <option key={l} value={l}>{LANG_LABEL[l]}</option>)}
           </select>
         </div>
-        <nav className="mx-auto flex max-w-3xl gap-1 overflow-x-auto px-2 pb-2" aria-label="Main">
+        <nav className="mx-auto flex max-w-3xl flex-wrap gap-1 px-2 pb-2" aria-label="Main">
           {nav.map((n) => (
             <Link key={n.to} to={n.to} className="nav-link" activeProps={{ "data-active": "true" } as any} activeOptions={{ exact: true }}>
               {t(n.k)}
