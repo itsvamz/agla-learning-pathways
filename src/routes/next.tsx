@@ -56,7 +56,7 @@ function NextPage() {
       {!path || !plan ? (
         <div className="card">
           <p className="mb-3">Choose a route first so your plan connects to a real next decision.</p>
-          <Link to="/route" className="btn-primary">{t("route")}</Link>
+          <Link to="/routes" className="btn-primary">{t("route")}</Link>
         </div>
       ) : (
         <>

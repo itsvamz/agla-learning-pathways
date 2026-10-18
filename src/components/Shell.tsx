@@ -7,7 +7,7 @@ export function Shell({ children }: { children: ReactNode }) {
   const { s, set, t, learner, reset } = useStore();
   const nav = [
     { to: "/", k: "explore" as const },
-    { to: "/route", k: "route" as const },
+    { to: "/routes", k: "route" as const },
     { to: "/next", k: "next" as const },
     { to: "/facilitator", k: "facilitator" as const },
   ];
