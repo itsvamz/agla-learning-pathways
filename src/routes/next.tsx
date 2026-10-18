@@ -61,8 +61,8 @@ function NextPage() {
       ) : (
         <>
           {primary && (
-            <div className="card border-primary">
-              <div className="text-sm text-muted-foreground">Do this first</div>
+            <div className="card callout-sun">
+              <div className="text-sm font-semibold uppercase tracking-wide">⭐ Do this first</div>
               <div className="text-lg font-semibold">{primary.title} · {primary.minutes} min</div>
             </div>
           )}

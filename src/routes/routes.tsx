@@ -3,6 +3,11 @@ import { NeedLearner, Shell } from "@/components/Shell";
 import { PATHWAYS } from "@/lib/data";
 import { affordability, evaluate, formatINR, paidWorkUnlocked } from "@/lib/rules";
 import { useStore } from "@/lib/store";
+import study from "@/assets/path-study.jpg";
+import records from "@/assets/path-records.jpg";
+import service from "@/assets/path-service.jpg";
+
+const IMG = { PATH_STUDY: study, PATH_RECORDS: records, PATH_SERVICE: service };
 
 export const Route = createFileRoute("/routes")({
   head: () => ({
@@ -37,6 +42,7 @@ function RoutePage() {
           const icon = e.state === "meets" ? "✓" : e.state === "does_not_meet" ? "✕" : "?";
           return (
             <article key={p.id} className="card" data-state={e.state}>
+              <img src={IMG[p.id]} alt="" className="card-img" loading="lazy" width={992} height={672} />
               <div className="flex flex-wrap items-start gap-2">
                 <h2 className="h2 m-0 flex-1">{p.title}</h2>
                 <span className={`status status-${e.state}`}>{icon} {label}</span>

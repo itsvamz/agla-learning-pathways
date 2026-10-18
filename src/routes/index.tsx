@@ -5,6 +5,10 @@ import { Speak, VoiceInput } from "@/components/Voice";
 import { EXPLORE_CARDS, TRIAL_TX, type Learner } from "@/lib/data";
 import { bookkeepingAnswer, formatINR, rupeesToPaise } from "@/lib/rules";
 import { useStore } from "@/lib/store";
+import hero from "@/assets/hero.jpg";
+import { Utensils, Shirt, Sun, Wheat } from "lucide-react";
+
+const CARD_ICON = { E03: Utensils, E04: Shirt, E05: Sun, E06: Wheat } as const;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,12 +33,22 @@ function Explore() {
   if (!learner)
     return (
       <Shell>
+        <div className="hero">
+          <img src={hero} alt="A student walking a village path toward the sunrise" width={1536} height={768} />
+          <div className="hero-text">
+            <p className="font-display text-3xl font-bold leading-tight">Your next step, made clear.</p>
+            <p className="text-sm opacity-90">Try real work, compare routes, and get help from your facilitator.</p>
+          </div>
+        </div>
         <h1 className="h1">{t("who")}</h1>
         <div className="grid gap-3 sm:grid-cols-2">
           {s.learners.map((l) => (
-            <button key={l.id} className="card text-left hover:border-primary" onClick={() => set((x) => ({ ...x, learnerId: l.id }))}>
-              <div className="font-semibold">{l.name} <span className="text-sm text-muted-foreground">· {l.age ?? t("unknown")} yrs</span></div>
-              <div className="text-sm text-muted-foreground">{l.goal}</div>
+            <button key={l.id} className="card card-hover flex items-center gap-3 text-left" onClick={() => set((x) => ({ ...x, learnerId: l.id }))}>
+              <span className="avatar" aria-hidden>{l.name[0]}</span>
+              <span>
+                <span className="block font-semibold">{l.name} <span className="text-sm text-muted-foreground">· {l.age ?? t("unknown")} yrs</span></span>
+                <span className="block text-sm text-muted-foreground">{l.goal}</span>
+              </span>
             </button>
           ))}
         </div>
@@ -48,7 +62,8 @@ function Explore() {
       <RetailTrial />
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         {EXPLORE_CARDS.map((c) => (
-          <div key={c.id} className="card">
+          <div key={c.id} className="card card-hover">
+            {(() => { const I = CARD_ICON[c.id as keyof typeof CARD_ICON]; return <span className="icon-chip"><I className="size-5" /></span>; })()}
             <div className="font-semibold">{c.title}</div>
             <p className="text-sm text-muted-foreground">{c.task}</p>
           </div>
