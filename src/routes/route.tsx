@@ -4,7 +4,7 @@ import { PATHWAYS } from "@/lib/data";
 import { affordability, evaluate, formatINR, paidWorkUnlocked } from "@/lib/rules";
 import { useStore } from "@/lib/store";
 
-export const Route = createFileRoute("/route")({
+export const Route = createFileRoute("")({
   head: () => ({
     meta: [
       { title: "My route — Agla Kadam" },
